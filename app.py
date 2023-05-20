@@ -89,34 +89,34 @@ def uploadvideo():
                 c=1
                 while True:
                     ret,frame=cap.read()
-                    if c%5==0:
-                        frame0 = cv2.flip(frame, 1)
-                        frame1=np.array(frame0)
-                        image=cv2.cvtColor(frame1,cv2.COLOR_BGR2RGB)
-                        results=pose.process(image)
-                        landmarks=results.pose_landmarks.landmark
-                        mp_drawing.draw_landmarks(image,results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                mp_drawing.DrawingSpec(color=(245,124,66),thickness=2,circle_radius=2),
-                                                mp_drawing.DrawingSpec(color=(0,255,0),thickness=2,circle_radius=2))
-                                                
-                        temp=[]
-                        for j in landmarks:
-                            temp = temp + [j.x, j.y, j.z, j.visibility]
-                        
-                        y = model.predict([temp])
-                        num = int(np.argmax(y, axis=1))
-                        # d=y[0]
-                        # print(d)
+#                     if c%5==0:
+                    frame0 = cv2.flip(frame, 1)
+                    frame1=np.array(frame0)
+                    image=cv2.cvtColor(frame1,cv2.COLOR_BGR2RGB)
+                    results=pose.process(image)
+                    landmarks=results.pose_landmarks.landmark
+                    mp_drawing.draw_landmarks(image,results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                            mp_drawing.DrawingSpec(color=(245,124,66),thickness=2,circle_radius=2),
+                                            mp_drawing.DrawingSpec(color=(0,255,0),thickness=2,circle_radius=2))
 
-                        if landmarks[0] in landmarks:
-                            image_height,image_width,_=image.shape
-                            x=results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x*image_width
-                            y=results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y*image_height   
-                            cv2.putText(image,Action[num],(int(x)-50,int(y)-50), cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),2)
-                        # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+                    temp=[]
+                    for j in landmarks:
+                        temp = temp + [j.x, j.y, j.z, j.visibility]
 
-                        imageLocation.image(image)
-                    c+=1
+                    y = model.predict([temp])
+                    num = int(np.argmax(y, axis=1))
+                    # d=y[0]
+                    # print(d)
+
+                    if landmarks[0] in landmarks:
+                        image_height,image_width,_=image.shape
+                        x=results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x*image_width
+                        y=results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y*image_height   
+                        cv2.putText(image,Action[num],(int(x)-50,int(y)-50), cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),2)
+                    # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+
+                    imageLocation.image(image)
+#                     c+=1
         except:
             st.write('Success!')
                 
