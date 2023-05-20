@@ -115,6 +115,7 @@ def uploadvideo():
                             cv2.putText(image,Action[num],(int(x)-50,int(y)-50), cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),2)
                         # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
                         imageLocation.image(image)
+                        st.write(c)
                     c+=1
         except:
             st.write('Success!')
