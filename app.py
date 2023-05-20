@@ -14,8 +14,8 @@ from streamlit_webrtc import WebRtcMode,webrtc_streamer
 import threading
 import webbrowser
 
-import pickle
-SVCmodel=pickle.load(open('SVCmodel_76.5.pkl','rb'))
+# import pickle
+# SVCmodel=pickle.load(open('SVCmodel_76.5.pkl','rb'))
 
 import keras
 model=keras.models.load_model("modelCNN_7823.h5")
