@@ -116,18 +116,18 @@ def uploadvideo():
                             cv2.putText(image,Action[num],(int(x)-50,int(y)-50), cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),2)
                         # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 #                         st.image(image)
-                        st.write()
 #                         imageLocation.image(image)
-#                         image_array.append(image)
-#                         st.write(len(image_array))
+                        image_array.append(image)
+                        st.write(len(image_array))
+                        st.image(image_array[c/5])
 
                     c+=1
-            for i in len(image_array):
-                imageLocation.image(image_array[i])
+#             for i in len(image_array):
+#                 imageLocation.image(image_array[i])
         except:
             st.write('Success!')
-    for i in range(image_array):
-        imageLocation.image(i)
+#     for i in range(image_array):
+#         imageLocation.image(i)
                 
                 
                 
