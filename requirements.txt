@@ -1,7 +1,7 @@
 streamlit
 numpy
 keras
-tensoflow
+tensorflow
 mediapipe
 cv2
 tempfile
