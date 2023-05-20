@@ -121,6 +121,7 @@ def uploadvideo():
                         image_array.append(image)
 
                     c+=1
+                st.write(len(image_array))
                 for i in len(image_array):
                     imageLocation.image(image_array[i])
         except:
