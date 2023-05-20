@@ -122,10 +122,15 @@ def uploadvideo():
                         st.write(len(image_array))
 
                     c+=1
-                for i in len(image_array):
-                    imageLocation.image(image_array[i])
+            for i in len(image_array):
+                imageLocation.image(image_array[i])
         except:
             st.write('Success!')
+    for i in len(image_array):
+        imageLocation.image(image_array[i])
+                
+                
+                
                 
 def uploadimage():
     Action=['Walking','Running','Standing','Kicking']
