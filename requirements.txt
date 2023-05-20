@@ -1,6 +1,6 @@
-streamlit
+streamlit=0.82.0
 numpy
 keras
 tensorflow
-mediapipe==3.19
+mediapipe==0.8.4.2
 streamlit_webrtc
