@@ -81,7 +81,7 @@ def uploadvideo():
                 c=1
                 while True:
                     ret,frame=cap.read()
-                    if c%6==0:
+                    if c%5==0:
                         frame0 = cv2.flip(frame, 1)
                         frame1=np.array(frame0)
                         image=cv2.cvtColor(frame1,cv2.COLOR_BGR2RGB)
