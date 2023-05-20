@@ -1,0 +1,6 @@
+channels:
+  - conda-myenv
+ dependencies:
+  -streamlit
+  -pip:
+    - mediapipe
