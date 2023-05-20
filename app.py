@@ -16,10 +16,10 @@ import threading
 import webbrowser
 
 import pickle
-SVCmodel=pickle.load(open('D:\cv\SVCmodel_76.5.pkl','rb'))
+SVCmodel=pickle.load(open('SVCmodel_76.5.pkl','rb'))
 
 import keras
-model=keras.models.load_model("D:\cv\modelCNN_7823.h5")
+model=keras.models.load_model("modelCNN_7823.h5")
 
 lock = threading.Lock()
 img_container = {"img": None}
