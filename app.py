@@ -22,7 +22,7 @@ def SVC(a):
     return d
 
 import keras
-model=keras.models.load_model("modelCNN_7609.h5")
+model=keras.models.load_model("modelCNN_7823.h5")
 def CNN(a):
     y = model.predict([a])
     num = int(np.argmax(y, axis=1))
@@ -114,10 +114,10 @@ def uploadvideo():
                             y=results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y*image_height   
                             cv2.putText(image,Action[num],(int(x)-50,int(y)-50), cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),2)
                         # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-                        st.image(image)
-                        st.write(c)
+#                         st.image(image)
+#                         st.write(c)
 #                         imageLocation.image(image)
-
+                        imageLocation.video(image)
                     c+=1
         except:
             st.write('Success!')
