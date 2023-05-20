@@ -79,6 +79,7 @@ def realtime():
 def uploadvideo():
     video =st.file_uploader('Upload video.')
     imageLocation=st.empty()
+    image_array=[]
     if video is not None:
         tfile=tempfile.NamedTemporaryFile(delete=False)
         tfile.write(video.read())
@@ -117,8 +118,11 @@ def uploadvideo():
 #                         st.image(image)
 #                         st.write(c)
 #                         imageLocation.image(image)
-                        imageLocation.video(image)
+                        image_array.append(image)
+
                     c+=1
+                for i in len(image_array):
+                    imageLocation.image(image_array[i])
         except:
             st.write('Success!')
                 
