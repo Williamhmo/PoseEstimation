@@ -3,7 +3,6 @@ import mediapipe as mp
 import numpy as np
 import pickle
 import cv2
-import tensorflow_hub as hub
 import tensorflow as tf
 from matplotlib  import pyplot as plt
 from PIL import Image
