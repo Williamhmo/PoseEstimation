@@ -79,7 +79,6 @@ def realtime():
 def uploadvideo():
     video =st.file_uploader('Upload video.')
     imageLocation=st.empty()
-    image_array=[]
     if video is not None:
         tfile=tempfile.NamedTemporaryFile(delete=False)
         tfile.write(video.read())
@@ -115,20 +114,11 @@ def uploadvideo():
                             y=results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y*image_height   
                             cv2.putText(image,Action[num],(int(x)-50,int(y)-50), cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),2)
                         # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-#                         st.image(image)
-#                         imageLocation.image(image)
-                        image_array.append(image)
-                        st.write(len(image_array))
-                        st.write(c)
-                        st.image(image_array[c/5])
-
+                        imageLocation.image(image)
                     c+=1
-#             for i in len(image_array):
-#                 imageLocation.image(image_array[i])
         except:
             st.write('Success!')
-#     for i in range(image_array):
-#         imageLocation.image(i)
+
                 
                 
                 
