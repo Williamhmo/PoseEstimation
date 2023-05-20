@@ -116,6 +116,7 @@ def uploadvideo():
                         # output=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 
                         imageLocation.image(image,width=400)
+                        st.write(c)
                     c+=1
         except:
             st.write('Success!')
