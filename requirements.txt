@@ -1,0 +1,9 @@
+streamlit
+numpy
+keras
+tensoflow
+mediapipe
+cv2
+tempfile
+threading
+webbrowser
