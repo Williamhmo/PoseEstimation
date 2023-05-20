@@ -14,11 +14,19 @@ from streamlit_webrtc import WebRtcMode,webrtc_streamer
 import threading
 import webbrowser
 
-# import pickle
-# SVCmodel=pickle.load(open('SVCmodel_76.5.pkl','rb'))
+import pickle
+SVCmodel=pickle.load(open('SVCmodel_76.5.pkl','rb'))
+def SVC(a):
+    y = SVCmodel.predict([a])
+    d=y[0]
+    return d
 
 import keras
-model=keras.models.load_model("modelCNN_7823.h5")
+model=keras.models.load_model("modelCNN_7609.h5")
+def CNN(a):
+    y = model.predict([a])
+    num = int(np.argmax(y, axis=1))
+    return num
 
 lock = threading.Lock()
 img_container = {"img": None}
@@ -132,8 +140,14 @@ def uploadimage():
 
         for j in landmarks:
             temp = temp + [j.x, j.y, j.z, j.visibility]
-        y = model.predict([temp])
-        num = int(np.argmax(y, axis=1))
+#         y = model.predict([temp])
+#         num = int(np.argmax(y, axis=1))
+        Model_Option= st.sidebar.selectbox('Model_Options',('Convolutional Neural Network','Support Vector Classifier'))
+        if Model_Option == 'Convolutional Neural Network':
+            num=CNN(temp)
+            
+        if Model_Option == 'Support Vector Classifier':
+            num=CNN(temp)
         # d=y[0]
         # st.write(type(num))
         # if landmarks[0] in landmarks:
