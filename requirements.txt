@@ -4,4 +4,3 @@ keras
 tensorflow
 mediapipe
 streamlit_webrtc
-webbrowser
