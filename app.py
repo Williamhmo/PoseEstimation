@@ -119,6 +119,7 @@ def uploadvideo():
 #                         imageLocation.image(image)
                         image_array.append(image)
                         st.write(len(image_array))
+                        st.write(c)
                         st.image(image_array[c/5])
 
                     c+=1
