@@ -78,6 +78,7 @@ def realtime():
         
 def uploadvideo():
     video =st.file_uploader('Upload video.')
+    Model_Option= st.sidebar.selectbox('Model_Options',('Convolutional Neural Network','Support Vector Classifier'))
     imageLocation=st.empty()
     if video is not None:
         tfile=tempfile.NamedTemporaryFile(delete=False)
@@ -103,10 +104,15 @@ def uploadvideo():
                         for j in landmarks:
                             temp = temp + [j.x, j.y, j.z, j.visibility]
 
-                        y = model.predict([temp])
-                        num = int(np.argmax(y, axis=1))
+#                         y = model.predict([temp])
+#                         num = int(np.argmax(y, axis=1))
                         # d=y[0]
                         # print(d)
+                        if Model_Option == 'Convolutional Neural Network':
+                            num=CNN(temp)
+
+                        if Model_Option == 'Support Vector Classifier':
+                            num=CNN(temp)
 
                         if landmarks[0] in landmarks:
                             image_height,image_width,_=image.shape
@@ -127,6 +133,7 @@ def uploadvideo():
 def uploadimage():
     Action=['Walking','Running','Standing','Kicking']
     image=st.file_uploader('Upload an image.')
+    Model_Option= st.sidebar.selectbox('Model_Options',('Convolutional Neural Network','Support Vector Classifier'))
     if image is not None:
         photo=Image.open(image)
         img_array=np.array(photo)
@@ -146,7 +153,7 @@ def uploadimage():
             temp = temp + [j.x, j.y, j.z, j.visibility]
 #         y = model.predict([temp])
 #         num = int(np.argmax(y, axis=1))
-        Model_Option= st.sidebar.selectbox('Model_Options',('Convolutional Neural Network','Support Vector Classifier'))
+
         if Model_Option == 'Convolutional Neural Network':
             num=CNN(temp)
             
