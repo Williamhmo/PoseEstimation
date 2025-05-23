@@ -24,9 +24,16 @@ def SVC(a):
 import keras
 model=keras.models.load_model("modelCNN_7823.h5")
 def CNN(a):
-    y = model.predict([a])
+    import numpy as np
+    a = np.array(a, dtype=np.float32)  # Ensure it's a NumPy array with correct type
+    a = np.expand_dims(a, axis=0)      # Add batch dimension
+    y = model.predict(a)
     num = int(np.argmax(y, axis=1))
     return num
+# def CNN(a):
+#     y = model.predict([a])
+#     num = int(np.argmax(y, axis=1))
+#     return num
 
 lock = threading.Lock()
 img_container = {"img": None}
